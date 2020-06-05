@@ -46,6 +46,9 @@ window.history
 ### 04 生命周期
 
 react 16 之后有三个生命周期被废弃 （没有被删除）
+componentWillMount
+componentWillReceiveProps
+componentWillUpdate
 
 官方计划在 17 版本中完全删除，只保留 UNSAVE\_前缀，目的为了向下兼容
 
