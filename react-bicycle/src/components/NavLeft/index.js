@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import MenuConfig from '../../config/menuConfig';
 import { Menu } from 'antd';
-import { Link } from 'react-router-dom';
 import MenuItem from 'antd/lib/menu/MenuItem';
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+// import { Link } from 'react-router-dom';
+// import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
 import './index.less';
 
 const { SubMenu } = Menu;
-
-function handleClick(e) {
-  console.log('click', e);
-}
 
 export default class extends Component {
   // 菜单渲染  reduce

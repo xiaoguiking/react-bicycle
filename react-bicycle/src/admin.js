@@ -1,9 +1,10 @@
-import React, { Component, Fragment } from "react";
-import { Row, Col } from "antd";
-import "./style/common.less";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import NavLeft from "./components/NavLeft/index";
+import React, { Component, Fragment } from 'react';
+import { Row, Col } from 'antd';
+import './style/common.less';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import NavLeft from './components/NavLeft/index';
+import Home from './pages/Home';
 
 export default class Admin extends Component {
   render() {
@@ -16,7 +17,7 @@ export default class Admin extends Component {
           <Col span={21} className="main">
             <Header></Header>
             <Row className="content">
-              Content
+              <Home />
               {/* {this.props.children}加载子组件 */}
             </Row>
             <Footer />
