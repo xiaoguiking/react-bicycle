@@ -13,7 +13,7 @@ function handleClick(e) {
 }
 
 export default class extends Component {
-  // 菜单渲染
+  // 菜单渲染  reduce
   renderNavNode2 = (MenuConfig) => {
     console.log(MenuConfig, '123');
     return MenuConfig.reduce((pre, item) => {
@@ -47,6 +47,22 @@ export default class extends Component {
     }, []);
   };
 
+  renderMenu = (data) => {
+    return data.map((item) => {
+      if (item.children) {
+        return (
+          <SubMenu key={item.key} title={item.title}>
+            {this.renderMenu(MenuConfig)}
+          </SubMenu>
+        );
+      }
+      return (
+        <MenuItem key={item.key} title={item.title}>
+          {item.title}
+        </MenuItem>
+      );
+    });
+  };
   // componentDidMount() {
   //   const menuTreeNode = this.renderNavNode2(MenuConfig);
   //   this.setState({
@@ -54,7 +70,8 @@ export default class extends Component {
   //   });
   // }
   componentWillMount() {
-    const menuTreeNode = this.renderNavNode2(MenuConfig);
+    // const menuTreeNode = this.renderNavNode2(MenuConfig); reduce
+    const menuTreeNode = this.renderNavNode2(MenuConfig); //递归
     this.setState({
       menuTreeNode,
     });
@@ -66,10 +83,9 @@ export default class extends Component {
           <img src="/assets/logo-ant.svg" alt="logo" />
           <h1>logo</h1>
         </div>
+
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
           {this.state.menuTreeNode}
-          {/* <Menu.Item key="setting:1">Option 1</Menu.Item>
-          <Menu.Item key="setting:2">Option 2</Menu.Item> */}
         </Menu>
       </div>
     );
