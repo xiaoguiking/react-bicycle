@@ -73,7 +73,7 @@ export default class extends Component {
 
   componentDidMount() {
     // this.getWeatherApiData();
-    this.getWeather();
+    // this.getWeather();
   }
 
   componentWillUnmount() {

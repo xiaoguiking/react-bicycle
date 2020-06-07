@@ -3,10 +3,11 @@ import React from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import App from './App';
 import Admin from './admin';
-import Login from './pages/Login/Login';
+import Login from './pages/login/Login';
 // import NotFound from './pages/Login/NotFound';
 import Buttons from './pages/ui/buttons';
 import Home from './pages/Home';
+import NotMatch from './pages/notMatch';
 
 export default class IRouter extends React.Component {
   render() {
@@ -23,6 +24,7 @@ export default class IRouter extends React.Component {
                   <Switch>
                     <Route path="/home" component={Home} />
                     <Route path="/ui/buttons" component={Buttons} />
+                    <Route component={NotMatch} />
                   </Switch>
                 </Admin>
               )}
