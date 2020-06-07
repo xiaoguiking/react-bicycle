@@ -2,31 +2,12 @@
 
 - 创建一个项目 create-react-app react-bicycle
 - 打包 yarn build
-- 文件目录结构
-  pages
-  componnts
-  common
-  utils
-  style
-  config
-- 预处理语言
-  npm install less less-loader
-  config webpack.config.js 所有的 sass 改成 less
-  less@2.7.3 降级处理 回退版本
+- 文件目录结构 pages componnts common utils style config
+- 预处理语言 npm install less less-loader config webpack.config.js 所有的 sass 改成 less less@2.7.3 降级处理 回退版本
 
-- antd
-  npm install antd
-  全局加载 包过大 x
-  按需加载
-  npm install babel-plugin-import
-  config webpack.config.js 找 babel-loader 有一个 plugins
-  ["import", { "libraryName": "antd", style: true }]
-  less 版本 回退 2.7.3
+- antd npm install antd 全局加载 包过大 x 按需加载 npm install babel-plugin-import config webpack.config.js 找 babel-loader 有一个 plugins ["import", { "libraryName": "antd", style: true }] less 版本 回退 2.7.3
 - 路由
-- 写界面
-  跟组件
-  login reg admin
-  admin/list admin/food admin/user
+- 写界面跟组件 login reg admin admin/list admin/food admin/user
 
 * 封装 axios
 * 代理
@@ -78,5 +59,13 @@ src/components
     - index.js
     - index.css
 - admin.js
-- style
-  -common.less
+- style -common.less
+- axios
+
+### 路由使用 react-router-dom 4.x
+
+- HashRouter BrowserRouter
+- Route: path exact component render
+- NavLink Link
+
+路由传值取参数 `<Route path="/admin/:id" 取值：this.props.match.params.id`

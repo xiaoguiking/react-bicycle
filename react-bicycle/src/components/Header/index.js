@@ -72,8 +72,8 @@ export default class extends Component {
   }
 
   componentDidMount() {
-    this.getWeatherApiData();
-    this.getWeather();
+    // this.getWeatherApiData();
+    // this.getWeather();
   }
 
   componentWillUnmount() {
@@ -95,8 +95,8 @@ export default class extends Component {
           </Col>
           <Col span={20} className="weather">
             <span className="date"> {this.state.sysTime} </span>
-            <span className="weather-img"> {dayPictureUrl}</span>
-            {/*<img src={dayPictureUrl} alt="天气" />*/}
+            {/*<span className="weather-img"> {dayPictureUrl}</span>*/}
+            <img src={dayPictureUrl} alt="天气" />
             <span className="weather-detail">{weather}</span>
           </Col>
         </Row>
