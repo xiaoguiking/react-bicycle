@@ -3,7 +3,9 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import Home from './Home';
 import About from '../router_demo/About';
 import Dashboard from '../router_demo/Dashboard';
-import Main from '../router_demo/Main';
+// import Main from '../router_demo/Main';
+import { Main } from './Main';
+import Info from './Info';
 
 export default () => {
   return (
@@ -14,7 +16,7 @@ export default () => {
           path="/main"
           render={() => (
             <Main>
-              <Route exact path="/main/a" component={About} />
+              <Route e path="/main/:id" component={Info} />
             </Main>
           )}
         />
