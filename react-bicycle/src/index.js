@@ -5,8 +5,9 @@ import './index.css';
 // import Globalrouter from './Globalrouter';
 // import * as serviceWorker from './serviceWorker';
 // import Home from './pages/router_demo/Home';  路由学习1
-import IRouter from './pages/router2/router'; // 路由学习2
-// import Admin from "./admin";
+// import IRouter from './pages/router2/router'; // 路由学习2
+// import Admin from './admin'; //显示admin
+import IRouter from './router'; // 路由控制显示
 
 ReactDOM.render(<IRouter />, document.getElementById('root'));
 

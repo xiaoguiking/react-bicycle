@@ -8,20 +8,23 @@
  */
 export default {
   formateDate(time) {
+    function checkTime(time) {
+      return time < 10 ? '0' + time : time;
+    }
     if (!time) return '';
     let date = new Date(time);
     return (
       date.getFullYear() +
-      `-` +
-      (date.getMonth() + 1) +
-      `-` +
-      date.getDate() +
+      '-' +
+      checkTime(date.getMonth() + 1) +
+      '-' +
+      checkTime(date.getDate()) +
       ' ' +
-      date.getHours() +
-      `:` +
-      date.getMinutes() +
-      `:` +
-      date.getSeconds()
+      checkTime(date.getHours()) +
+      ':' +
+      checkTime(date.getMinutes()) +
+      ':' +
+      checkTime(date.getSeconds())
     );
   },
 };

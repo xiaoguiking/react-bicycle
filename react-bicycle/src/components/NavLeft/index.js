@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MenuConfig from '../../config/menuConfig';
 import { Menu } from 'antd';
 import MenuItem from 'antd/lib/menu/MenuItem';
-// import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 // import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
 import './index.less';
 
@@ -17,10 +17,10 @@ export default class extends Component {
       if (!item.children) {
         pre.push(
           <MenuItem key={item.key}>
-            {/* <Link to={item.key}> */}
-            {/* <Icon type={item.icon} /> */}
-            <span>{item.title}</span>
-            {/* </Link> */}
+            <Link to={item.key}>
+              {/* <Icon type={item.icon} /> */}
+              <span>{item.title}</span>
+            </Link>
           </MenuItem>,
         );
       } else {
@@ -43,6 +43,7 @@ export default class extends Component {
     }, []);
   };
 
+  //  菜单渲染 递归
   renderMenu = (data) => {
     return data.map((item) => {
       if (item.children) {
@@ -54,7 +55,7 @@ export default class extends Component {
       }
       return (
         <MenuItem key={item.key} title={item.title}>
-          {item.title}
+          <NavLink to={item.key}>{item.title}</NavLink>
         </MenuItem>
       );
     });
