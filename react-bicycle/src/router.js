@@ -38,3 +38,4 @@ export default class IRouter extends React.Component {
 }
 
 // <Route path="" component={NotFound} />
+// 不加switch， 所有都会匹配， 比如主页，然后404

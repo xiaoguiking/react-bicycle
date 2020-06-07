@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button } from 'antd';
+import { Card, Button, Radio } from 'antd';
 import '../index.less';
 import {
   PlusOutlined,
@@ -9,6 +9,7 @@ import {
   DownloadOutlined,
   LeftOutlined,
   RightOutlined,
+  PoweroffOutlined,
 } from '@ant-design/icons';
 /**
  * 按钮buttons 界面
@@ -18,15 +19,43 @@ export default class Buttons extends React.Component {
     super(props);
     this.state = {
       loading: true,
+      loadings: [],
+      size: 'large',
     };
   }
+
   handleCloseLoading = () => {
     this.setState({
       loading: false,
     });
   };
+  // loading 状态
+  enterLoading = (index) => {
+    this.setState(({ loadings }) => {
+      const newLoadings = [...loadings];
+      newLoadings[index] = true;
+
+      return {
+        loadings: newLoadings,
+      };
+    });
+    setTimeout(() => {
+      this.setState(({ loadings }) => {
+        const newLoadings = [...loadings];
+        newLoadings[index] = false;
+
+        return {
+          loadings: newLoadings,
+        };
+      });
+    }, 6000);
+  };
+  // 改变大小
+  handleSizeChange = (e) => {
+    this.setState({ size: e.target.value });
+  };
   render() {
-    const { loading } = this.state;
+    const { loading, loadings, size } = this.state;
     return (
       <div className="button-page">
         <Card title="基础按钮">
@@ -61,6 +90,14 @@ export default class Buttons extends React.Component {
           <Button type="primary" onClick={this.handleCloseLoading}>
             关闭
           </Button>
+          <Button
+            type="primary"
+            icon={<PoweroffOutlined />}
+            loading={loadings[1]}
+            onClick={() => this.enterLoading(1)}
+          >
+            Click me!
+          </Button>
         </Card>
         <Card title="按钮组">
           <Button.Group>
@@ -71,6 +108,26 @@ export default class Buttons extends React.Component {
               前进
             </Button>
           </Button.Group>
+        </Card>
+        <Card title="按钮尺寸">
+          <Radio.Group value={size} onChange={this.handleSizeChange}>
+            <Radio value="small">小</Radio>
+            <Radio value="default">中</Radio>
+            <Radio value="large">大</Radio>
+          </Radio.Group>
+          <Button type="primary" size={size}>
+            king
+          </Button>
+          <Button size={size}>king</Button>
+          <Button type="dashed" size={size}>
+            king
+          </Button>
+          <Button type="danger" size={size}>
+            king
+          </Button>
+          <Button disabled size={size}>
+            king
+          </Button>
         </Card>
       </div>
     );
