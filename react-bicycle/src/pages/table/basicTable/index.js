@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table, Card } from 'antd';
 import axios from '../../../axios/index';
+import Modal from 'antd/lib/modal/Modal';
 /**
  * 表格
  */
@@ -16,7 +17,6 @@ export default class BasicTable extends React.Component {
   }
 
   componentWillMount() {
-    console.log(1);
     this.requestData2();
   }
   componentDidMount() {
@@ -65,10 +65,6 @@ export default class BasicTable extends React.Component {
     this.setState({
       dataSource: data,
     });
-
-    // setTimeout(() => {
-    // this.requestData2();
-    // }, 9000);
   }
 
   // 动态表格渲染
@@ -97,7 +93,11 @@ export default class BasicTable extends React.Component {
       })
       .then((res) => {
         if (res.code == 0) {
-          console.log(res.result, '数据');
+          // 动态添加key
+          // res.result.map((item,index) =>  {
+          //   item.key1 = index;
+          // })
+
           this.setState({
             dataList: res.result,
           });
@@ -108,8 +108,29 @@ export default class BasicTable extends React.Component {
       });
   };
 
+  // 选中每一项
+  onRowClick = (record, index) => {
+    Modal.info({
+      title: '查看内容框',
+      content: `用户名：${record.name}, 用户状态：${record.state}`,
+    });
+    let selectKey = [index];
+    this.setState({
+      selectedRowKeys: selectKey,
+      selectItem: record,
+    });
+    console.log(record, index, 'onRow');
+  };
+  // 编辑删除操作
+  add = () => {
+    let item = this.state.selectItem;
+    console.log(item);
+    if (item.id) {
+      // TODO
+    }
+  };
   render() {
-    const { dataSource, dataList } = this.state;
+    const { dataSource, dataList, selectedRowKeys } = this.state;
     console.log(dataList, 'data获取数据');
     const style = {
       width: 'calc(85vw)',
@@ -216,6 +237,11 @@ export default class BasicTable extends React.Component {
       },
     ];
 
+    const rowSelection = {
+      type: 'radio',
+      // 指定选中项的key数组 ,不加没有选中效果
+      selectedRowKeys,
+    };
     return (
       <div style={style}>
         <Card title="基础表格">
@@ -223,6 +249,23 @@ export default class BasicTable extends React.Component {
         </Card>
         <Card title="动态渲染表格">
           <Table columns={columns1} bordered rowKey="id" dataSource={dataList} />
+        </Card>
+        <Card title="Mock-单选 ">
+          <Table
+            columns={columns1}
+            // 点击每一行效果
+            onRow={(record, index) => {
+              return {
+                onClick: () => {
+                  this.onRowClick(record, index);
+                }, // 点击行
+              };
+            }}
+            bordered
+            rowKey="id"
+            dataSource={dataList}
+            rowSelection={rowSelection}
+          />
         </Card>
       </div>
     );
