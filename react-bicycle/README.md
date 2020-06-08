@@ -1,3 +1,10 @@
+## 项目分支
+
+- master 主分支
+- dev-Form 表单分支
+- dev—List 列表分支
+- dev-modal 模态框分支
+
 ## 项目整体学习架构
 
 - 创建一个项目 create-react-app react-bicycle
