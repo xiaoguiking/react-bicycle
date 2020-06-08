@@ -62,6 +62,12 @@ src/components
 - style -common.less
 - axios
 
+### 项目工程化 Table 动态渲染
+
+- Mock 数据
+- Axios 封装
+- Loading 处理 错误拦截
+
 ### 路由使用 react-router-dom 4.x
 
 - HashRouter BrowserRouter
