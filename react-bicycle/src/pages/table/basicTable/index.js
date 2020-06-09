@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table, Card, Button, Modal, message } from 'antd';
 import axios from '../../../axios/index';
+import Utils from './../../../utils/index';
 
 /**
  * 表格
@@ -13,11 +14,15 @@ export default class BasicTable extends React.Component {
       dataSource: [],
       dataList: [],
       loading: false,
+      dataPagination: [],
     };
   }
-
+  params = {
+    page: 1,
+  };
   componentWillMount() {
     this.requestData2();
+    this.requestDPagination();
   }
   componentDidMount() {
     const data = [
@@ -110,7 +115,45 @@ export default class BasicTable extends React.Component {
         console.log(err);
       });
   };
-
+  // 动态获取分页
+  requestDPagination = () => {
+    let _this = this;
+    axios
+      .ajax({
+        url: 'table/list_1',
+        data: {
+          params: {
+            // 分页
+            page: this.params.page,
+          },
+          // isShowLoading: false, 设置isShowLoading false 不会出现Loading
+        },
+      })
+      .then((res) => {
+        // eslint-disable-next-line
+        if (res.code == 0) {
+          // 动态添加key
+          // res.result.map((item,index) =>  {
+          //   item.key1 = index;
+          // })
+          this.setState({
+            dataPagination: res.result,
+            // 清空每次的选择
+            selectedRowKeys: [],
+            selectedRows: null,
+            // 分页
+            pagination: Utils.pagination(res, (current) => {
+              // todo
+              _this.params.page = current;
+              this.requestDPagination();
+            }),
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   // 选中每一项
   onRowClick = (record, index) => {
     Modal.info({
@@ -153,7 +196,7 @@ export default class BasicTable extends React.Component {
   };
 
   render() {
-    const { dataSource, dataList, selectedRowKeys } = this.state;
+    const { dataSource, dataList, selectedRowKeys, dataPagination } = this.state;
     console.log(dataList, 'data获取数据');
     const style = {
       width: 'calc(85vw)',
@@ -324,6 +367,15 @@ export default class BasicTable extends React.Component {
             rowKey="id"
             dataSource={dataList}
             rowSelection={rowCheckSelection}
+          />
+        </Card>
+        <Card title="Mock-分页 ">
+          <Table
+            columns={columns1}
+            bordered
+            rowKey="id"
+            dataSource={dataPagination}
+            pagination={this.state.pagination}
           />
         </Card>
       </div>

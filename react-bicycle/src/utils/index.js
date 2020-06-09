@@ -1,10 +1,7 @@
-/*
- * @Author: your name
- * @Date: 2020-06-06 16:50:04
- * @LastEditTime: 2020-06-06 22:57:04
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /antdBicycle/react-bicycle/react-bicycle/src/utils/index.js
+/**
+ * 插件封装集合
+ * 1.日期插件
+ * 2.
  */
 export default {
   formateDate(time) {
@@ -26,5 +23,20 @@ export default {
       ':' +
       checkTime(date.getSeconds())
     );
+  },
+  pagination(data, callback) {
+    return {
+      onChange: (current) => {
+        callback(current);
+      },
+      // value 对应的真实数据字段
+      current: data.page,
+      pageSize: data.page_size,
+      total: data.total,
+      showTotal: () => {
+        return `共有${data.total}条`;
+      },
+      showQuickJumper: true,  
+    };
   },
 };
