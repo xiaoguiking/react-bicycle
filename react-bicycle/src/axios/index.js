@@ -48,9 +48,11 @@ export default class Axios {
           loading.style.display = 'none';
         }
         // http请求自身200 成功
+        // eslint-disable-next-line
         if (response.status == '200') {
           let res = response.data;
           // 业务后端接口为0
+          // eslint-disable-next-line
           if (res.code == '0') {
             resolve(res);
           } else {

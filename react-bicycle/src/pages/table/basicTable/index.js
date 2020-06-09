@@ -1,7 +1,7 @@
 import React from 'react';
-import { Table, Card } from 'antd';
+import { Table, Card, Button, Modal, message } from 'antd';
 import axios from '../../../axios/index';
-import Modal from 'antd/lib/modal/Modal';
+
 /**
  * 表格
  */
@@ -92,14 +92,17 @@ export default class BasicTable extends React.Component {
         },
       })
       .then((res) => {
+        // eslint-disable-next-line
         if (res.code == 0) {
           // 动态添加key
           // res.result.map((item,index) =>  {
           //   item.key1 = index;
           // })
-
           this.setState({
             dataList: res.result,
+            // 清空每次的选择
+            selectedRowKeys: [],
+            selectedRows: null,
           });
         }
       })
@@ -114,13 +117,14 @@ export default class BasicTable extends React.Component {
       title: '查看内容框',
       content: `用户名：${record.name}, 用户状态：${record.state}`,
     });
-    let selectKey = [index];
+    let selectKey = [index + 1];
     this.setState({
       selectedRowKeys: selectKey,
       selectItem: record,
     });
     console.log(record, index, 'onRow');
   };
+
   // 编辑删除操作
   add = () => {
     let item = this.state.selectItem;
@@ -129,6 +133,25 @@ export default class BasicTable extends React.Component {
       // TODO
     }
   };
+
+  // 多选删除操作
+  handleDelete = () => {
+    let rows = this.state.selectedRows;
+    let ids = [];
+    rows.map((item) => {
+      return ids.push(item.id);
+    });
+    Modal.confirm({
+      title: '删除提示',
+      content: `您确定要删除这些数据${ids.join(',')}?`,
+      onOk: () => {
+        message.success('删除成功');
+        // 删除完成再次请求
+        this.requestData2();
+      },
+    });
+  };
+
   render() {
     const { dataSource, dataList, selectedRowKeys } = this.state;
     console.log(dataList, 'data获取数据');
@@ -237,11 +260,32 @@ export default class BasicTable extends React.Component {
       },
     ];
 
+    // 单选
     const rowSelection = {
       type: 'radio',
       // 指定选中项的key数组 ,不加没有选中效果
       selectedRowKeys,
     };
+
+    // 复选
+    const rowCheckSelection = {
+      type: 'checkbox',
+      // 指定选中项的key数组 ,不加没有选中效果
+      selectedRowKeys,
+      // 当前选中行，选中的行
+      onChange: (selectedRowKeys, selectedRows) => {
+        // let ids = [];
+        // selectedRows.map((item) => {
+        //   ids.push(item.id);
+        // });
+        this.setState({
+          selectedRowKeys,
+          // selectedIds: ids,
+          selectedRows,
+        });
+      },
+    };
+
     return (
       <div style={style}>
         <Card title="基础表格">
@@ -265,6 +309,21 @@ export default class BasicTable extends React.Component {
             rowKey="id"
             dataSource={dataList}
             rowSelection={rowSelection}
+          />
+        </Card>
+        <Card title="Mock-复选 ">
+          <div style={{ marginBottom: '15px' }}>
+            <Button type="primary" onClick={this.handleDelete}>
+              删除
+            </Button>
+          </div>
+          <Table
+            columns={columns1}
+            // 点击每一行效果
+            bordered
+            rowKey="id"
+            dataSource={dataList}
+            rowSelection={rowCheckSelection}
           />
         </Card>
       </div>
