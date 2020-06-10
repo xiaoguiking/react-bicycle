@@ -1,16 +1,18 @@
 import React from 'react';
 import { Card } from 'antd';
-/**
- * 弹框
- */
-export default class Modals extends React.Component {
+
+export default class FormReg extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   render() {
     const style = {
       width: 'calc(85vw)',
     };
     return (
       <div style={style}>
-        <Card title="基础模态框"></Card>
+        <Card>登录</Card>
       </div>
     );
   }

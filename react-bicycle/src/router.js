@@ -8,6 +8,8 @@ import Login from './pages/login/Login';
 import Buttons from './pages/ui/buttons';
 import Modals from './pages/ui/modals';
 import Home from './pages/Home';
+import FormLogin from './pages/form/login';
+import FormReg from './pages/form/reg';
 import NotMatch from './pages/notMatch';
 
 export default class IRouter extends React.Component {
@@ -26,6 +28,8 @@ export default class IRouter extends React.Component {
                     <Route path="/home" component={Home} />
                     <Route path="/ui/buttons" component={Buttons} />
                     <Route path="/ui/modals" component={Modals} />
+                    <Route path="/form/login" component={FormLogin} />
+                    <Route path="/form/reg" component={FormReg} />
                     <Route component={NotMatch} />
                   </Switch>
                 </Admin>
