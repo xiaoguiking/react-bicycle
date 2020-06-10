@@ -10,6 +10,7 @@ import Modals from './pages/ui/modals';
 import Home from './pages/Home';
 import NotMatch from './pages/notMatch';
 import BasicTable from './pages/table/basicTable';
+import highTable from './pages/table/highTable';
 
 export default class IRouter extends React.Component {
   render() {
@@ -28,6 +29,7 @@ export default class IRouter extends React.Component {
                     <Route path="/ui/buttons" component={Buttons} />
                     <Route path="/ui/modals" component={Modals} />
                     <Route path="/table/basic" component={BasicTable} />
+                    <Route path="/table/high" component={highTable} />
                     <Route component={NotMatch} />
                   </Switch>
                 </Admin>

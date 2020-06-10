@@ -72,18 +72,6 @@ export default class BasicTable extends React.Component {
     });
   }
 
-  // 动态表格渲染
-  // requestData2 = () => {
-  //   axios.get('https://mock.yonyoucloud.com/mock/7866/table/list').then((res) => {
-  //     console.log(res.data.result);
-  //     if (res.status === '200') {
-  //       this.setState({
-  //         dataList: res.data.result,
-  //       });
-  //     }
-  //   });
-  // };
-
   // 封装axios 动态渲染表格数据
   requestData2 = () => {
     axios
@@ -197,7 +185,6 @@ export default class BasicTable extends React.Component {
 
   render() {
     const { dataSource, dataList, selectedRowKeys, dataPagination } = this.state;
-    console.log(dataList, 'data获取数据');
     const style = {
       width: 'calc(85vw)',
     };
@@ -362,7 +349,6 @@ export default class BasicTable extends React.Component {
           </div>
           <Table
             columns={columns1}
-            // 点击每一行效果
             bordered
             rowKey="id"
             dataSource={dataList}
@@ -382,3 +368,15 @@ export default class BasicTable extends React.Component {
     );
   }
 }
+
+// 动态表格渲染
+// requestData2 = () => {
+//   axios.get('https://mock.yonyoucloud.com/mock/7866/table/list').then((res) => {
+//     console.log(res.data.result);
+//     if (res.status === '200') {
+//       this.setState({
+//         dataList: res.data.result,
+//       });
+//     }
+//   });
+// };
