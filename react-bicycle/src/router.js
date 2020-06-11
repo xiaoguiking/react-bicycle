@@ -11,6 +11,8 @@ import Home from './pages/Home';
 import FormLogin from './pages/form/login';
 import FormReg from './pages/form/reg';
 import NotMatch from './pages/notMatch';
+import BasicTable from './pages/table/basicTable';
+import highTable from './pages/table/highTable';
 
 export default class IRouter extends React.Component {
   render() {
@@ -30,6 +32,8 @@ export default class IRouter extends React.Component {
                     <Route path="/ui/modals" component={Modals} />
                     <Route path="/form/login" component={FormLogin} />
                     <Route path="/form/reg" component={FormReg} />
+                    <Route path="/table/basic" component={BasicTable} />
+                    <Route path="/table/high" component={highTable} />
                     <Route component={NotMatch} />
                   </Switch>
                 </Admin>

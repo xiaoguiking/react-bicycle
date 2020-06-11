@@ -9,8 +9,11 @@
 
 - 切换创建分支 git checkout -b dev
 - 合并分支
+
   - 切换到 master 分支 git checkout master
   - 合并指定分支： gie merge dev
+
+- 合并分支遇到冲突解决
 
 ## 项目整体学习架构
 
@@ -75,6 +78,12 @@ src/components
 - admin.js
 - style -common.less
 - axios
+
+### 项目工程化 Table 动态渲染
+
+- Mock 数据
+- Axios 封装
+- Loading 处理 错误拦截
 
 ### 路由使用 react-router-dom 4.x
 

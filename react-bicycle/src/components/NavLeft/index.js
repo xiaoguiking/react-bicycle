@@ -11,7 +11,6 @@ const { SubMenu } = Menu;
 export default class extends Component {
   // 菜单渲染  reduce
   renderNavNode2 = (MenuConfig) => {
-    console.log(MenuConfig, '123');
     return MenuConfig.reduce((pre, item) => {
       //添加Menu.item
       if (!item.children) {
