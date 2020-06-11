@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Modal } from 'antd';
+import { Card } from 'antd';
 /**
  * 弹框
  */
