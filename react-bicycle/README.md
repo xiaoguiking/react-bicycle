@@ -1,9 +1,16 @@
 ## 项目分支
 
 - master 主分支
-- dev-Form 表单分支
+- dev-Form 表单分支 done
 - dev—List 列表分支
 - dev-modal 模态框分支
+
+## 命令
+
+- 切换创建分支 git checkout -b dev
+- 合并分支
+  - 切换到 master 分支 git checkout master
+  - 合并指定分支： gie merge dev
 
 ## 项目整体学习架构
 
