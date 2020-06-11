@@ -238,11 +238,10 @@ export default class FormReg extends React.Component {
               </div>
             </FormItem>
             <FormItem {...offsetLayout}>
-              <Checkbox>
-                <a href="#" alt="魔王">
-                  我已经阅读过魔王协议
-                </a>
-              </Checkbox>
+              <Checkbox />
+              <a href="http:www.baidu.com" alt="魔王">
+                我已经阅读过魔王协议
+              </a>
             </FormItem>
             <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
               <Button type="primary" htmlType="submit">
