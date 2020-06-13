@@ -1,3 +1,23 @@
+## 项目分支
+
+- master 主分支
+- dev-Form 表单分支 done
+- dev—List 列表分支
+- dev-modal 模态框分支
+- dev-city 城市管理
+- dev-order 订单管理
+- dev-engineer 工程化
+
+## 命令
+
+- 切换创建分支 git checkout -b dev
+- 合并分支
+
+  - 切换到 master 分支 git checkout master
+  - 合并指定分支： gie merge dev
+
+- 合并分支遇到冲突解决
+
 ## 项目整体学习架构
 
 - 创建一个项目 create-react-app react-bicycle
