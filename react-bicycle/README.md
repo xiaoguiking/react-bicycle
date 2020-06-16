@@ -68,6 +68,21 @@ src/components
 - Axios 封装
 - Loading 处理 错误拦截
 
+### 项目工程化解析（解决什么问题--- 效率---降低维护难度）
+
+- 项目架构设计项目主页、登录页面、通用页面平级关系、公共机制
+- 目录结构定义
+- 指定项目开发规范 eslint
+- 模块化 组件化
+- 前后端接口规范
+- 性能优化、自动化部署 压缩合并打包
+
+```js
+架构设计 目录定义  路由封装 Axios封装 错误拦截 Loading封装
+表单封装 表格封装 分页封装 Header/Footer  菜单封装 Api封装
+公共机制 公共样式 Mock NoData封装
+```
+
 ### 路由使用 react-router-dom 4.x
 
 - HashRouter BrowserRouter
