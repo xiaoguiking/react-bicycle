@@ -1,6 +1,6 @@
 // 路由
 import React from 'react';
-import { HashRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import App from './App';
 import Admin from './admin';
 import Login from './pages/login/Login';
@@ -35,6 +35,7 @@ export default class IRouter extends React.Component {
                     <Route path="/table/basic" component={BasicTable} />
                     <Route path="/table/high" component={highTable} />
                     <Route component={NotMatch} />
+                    <Redirect to="/home" />
                   </Switch>
                 </Admin>
               )}
