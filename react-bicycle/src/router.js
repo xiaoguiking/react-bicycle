@@ -16,6 +16,8 @@ import highTable from './pages/table/highTable';
 import Loadings from './pages/ui/loadings';
 import Notice from './pages/ui/notice';
 import Message from './pages/ui/messages';
+import Tabs from './pages/ui/tabs';
+import Gallery from './pages/ui/gallery';
 
 export default class IRouter extends React.Component {
   render() {
@@ -36,8 +38,8 @@ export default class IRouter extends React.Component {
                     <Route path="/ui/loadings" component={Loadings} />
                     <Route path="/ui/notification" component={Notice} />
                     <Route path="/ui/messages" component={Message} />
-                    <Route path="/ui/tabs" component={Loadings} />
-                    <Route path="/ui/gallery" component={Loadings} />
+                    <Route path="/ui/tabs" component={Tabs} />
+                    <Route path="/ui/gallery" component={Gallery} />
                     <Route path="/ui/carousel" component={Loadings} />
                     <Route path="/form/login" component={FormLogin} />
                     <Route path="/form/reg" component={FormReg} />
