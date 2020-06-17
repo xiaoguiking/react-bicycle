@@ -18,6 +18,7 @@ import Notice from './pages/ui/notice';
 import Message from './pages/ui/messages';
 import Tabs from './pages/ui/tabs';
 import Gallery from './pages/ui/gallery';
+import Carousels from './pages/ui/carousels';
 
 export default class IRouter extends React.Component {
   render() {
@@ -32,21 +33,21 @@ export default class IRouter extends React.Component {
               render={() => (
                 <Admin>
                   <Switch>
-                    <Route path="/home" component={Home} />
-                    <Route path="/ui/buttons" component={Buttons} />
+                    <Route exact path="/home" component={Home} />
+                    <Route exact path="/ui/buttons" component={Buttons} />
                     <Route path="/ui/modals" component={Modals} />
                     <Route path="/ui/loadings" component={Loadings} />
                     <Route path="/ui/notification" component={Notice} />
                     <Route path="/ui/messages" component={Message} />
                     <Route path="/ui/tabs" component={Tabs} />
                     <Route path="/ui/gallery" component={Gallery} />
-                    <Route path="/ui/carousel" component={Loadings} />
+                    <Route path="/ui/carousel" component={Carousels} />
                     <Route path="/form/login" component={FormLogin} />
                     <Route path="/form/reg" component={FormReg} />
                     <Route path="/table/basic" component={BasicTable} />
                     <Route path="/table/high" component={highTable} />
-                    <Route component={NotMatch} />
                     <Redirect to="/home" />
+                    <Route component={NotMatch} />
                   </Switch>
                 </Admin>
               )}
