@@ -14,6 +14,8 @@ import NotMatch from './pages/notMatch';
 import BasicTable from './pages/table/basicTable';
 import highTable from './pages/table/highTable';
 import Loadings from './pages/ui/loadings';
+import Notice from './pages/ui/notice';
+import Message from './pages/ui/messages';
 
 export default class IRouter extends React.Component {
   render() {
@@ -32,6 +34,11 @@ export default class IRouter extends React.Component {
                     <Route path="/ui/buttons" component={Buttons} />
                     <Route path="/ui/modals" component={Modals} />
                     <Route path="/ui/loadings" component={Loadings} />
+                    <Route path="/ui/notification" component={Notice} />
+                    <Route path="/ui/messages" component={Message} />
+                    <Route path="/ui/tabs" component={Loadings} />
+                    <Route path="/ui/gallery" component={Loadings} />
+                    <Route path="/ui/carousel" component={Loadings} />
                     <Route path="/form/login" component={FormLogin} />
                     <Route path="/form/reg" component={FormReg} />
                     <Route path="/table/basic" component={BasicTable} />

@@ -1,3 +1,6 @@
+/**
+ * Modal 对话框
+ */
 import React, { useState } from 'react';
 import { Card, Spin, Alert, Space, Switch } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
@@ -6,9 +9,6 @@ const style = {
   width: 'calc(85vw)',
 };
 
-// const Icon = () => {
-//   return <LoadingOutlined type="loading" />;
-// };
 const Icon = <LoadingOutlined />;
 
 const Loadings = () => {
@@ -48,7 +48,6 @@ const Loadings = () => {
           <Alert message="react" description="这是警告alert" type="warning" />
         </Spin>
       </Card>
-      <Card title="Spin用法">123</Card>
     </div>
   );
 };
