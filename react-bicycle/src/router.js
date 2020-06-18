@@ -19,6 +19,7 @@ import Message from './pages/ui/messages';
 import Tabs from './pages/ui/tabs';
 import Gallery from './pages/ui/gallery';
 import Carousels from './pages/ui/carousels';
+import City from './pages/city';
 
 export default class IRouter extends React.Component {
   render() {
@@ -46,6 +47,8 @@ export default class IRouter extends React.Component {
                     <Route path="/form/reg" component={FormReg} />
                     <Route path="/table/basic" component={BasicTable} />
                     <Route path="/table/high" component={highTable} />
+                    <Route path="/table/high" component={highTable} />
+                    <Route path="/city" component={City} />
                     <Redirect to="/home" />
                     <Route component={NotMatch} />
                   </Switch>

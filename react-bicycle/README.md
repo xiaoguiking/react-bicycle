@@ -4,6 +4,9 @@
 - dev-Form 表单分支 done
 - dev—List 列表分支
 - dev-modal 模态框分支
+- dev-city 城市管理
+- dev-order 订单管理
+- dev-engineer 工程化
 
 ## 命令
 
@@ -14,6 +17,15 @@
   - 合并指定分支： gie merge dev
 
 - 合并分支遇到冲突解决
+
+
+
+### 记录合并 dev-city
+
+- git merge dev-city  
+- 合并过程出现冲突 git status， 解决冲突
+- git commit -am "dev-city 合并master冲突解决"
+- git push origin master
 
 ## 项目整体学习架构
 
