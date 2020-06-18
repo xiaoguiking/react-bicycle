@@ -3,6 +3,8 @@ import { Card, Table, Form, Modal, Button, message, Select } from 'antd';
 import axios from './../../axios/index';
 import Utils from './../../utils';
 import '../../style/common.less';
+import moment from 'moment';
+
 /**
  * 城市管理
  *
@@ -65,7 +67,6 @@ export default class City extends React.Component {
 
   // 开通城市
   handleOpenCity = () => {
-    console.log(2);
     this.setState({
       isShowCity: true,
     });
@@ -77,8 +78,31 @@ export default class City extends React.Component {
       isShowCity: false,
     });
   };
-  // 开通城市提交
-  handleOk = () => {};
+  // 开通城市提交 onSubmit
+  handleOk = () => {
+    this.setState({
+      isShowCity: false,
+    });
+  };
+
+  handleSubmit = () => {
+    this.setState({
+      isShowCity: false,
+    });
+  };
+
+  handleSubmit = async () => {
+    console.log(1);
+    // if (this.state.isShowCity) {
+    //   const fieldsValue = await form.validateFields();
+    //   //fieldsValue即为表单内的值
+    //   console.log('okHandle -> fieldsValue', fieldsValue);
+    // }
+    this.setState({
+      isShowCity: false,
+    });
+  };
+
   render() {
     const style = {
       width: 'calc(85vw)',
@@ -129,19 +153,34 @@ export default class City extends React.Component {
       {
         title: '城市开通时间',
         dataIndex: 'open_time',
-        // render: Utils.formateDate,
+        render: Utils.formateDate,
+        // render(open_time) {
+        //   const openTime = moment(open_time).format('YYYY-MM-DD');
+        //   return <div>{openTime}</div>;
+        // },
       },
       {
         title: '操作时间',
         dataIndex: 'update_time',
         // render: Utils.formateDate, //格式化时间戳
+        render(update_time) {
+          const upTime = moment(update_time).format('YYYY-MM-DD');
+          return <div>{upTime}</div>;
+        },
       },
       {
         title: '操作人',
         dataIndex: 'sys_user_name',
       },
     ];
-
+    const formItemLayout = {
+      labelCol: {
+        span: 5,
+      },
+      wrapperCol: {
+        span: 19,
+      },
+    };
     return (
       <div style={style}>
         <Card style={{ marginTop: 10 }}>
@@ -165,10 +204,40 @@ export default class City extends React.Component {
         <Modal
           title="开通城市"
           visible={this.state.isShowCity}
-          onOk={this.handleOk}
+          onOk={this.handleSubmit}
           onCancel={this.handleCancel}
+          forceRender={true}
         >
-          <OpenCityForm />
+          <Form
+            // form={form}
+            ref={this.formRef}
+            layout="horizontal"
+            initialValues={{
+              city_id: '',
+              op_mode: '1',
+              use_mode: '1',
+            }}
+          >
+            <FormItem label="选择城市" {...formItemLayout} name="city_id">
+              <Select style={{ width: 250 }}>
+                <Option value="">全部</Option>
+                <Option value="1">北京市</Option>
+                <Option value="2">天津市</Option>
+              </Select>
+            </FormItem>
+            <FormItem label="营运模式" {...formItemLayout} name="op_mode">
+              <Select style={{ width: 250 }}>
+                <Option value="1">自营</Option>
+                <Option value="2">加盟</Option>
+              </Select>
+            </FormItem>
+            <FormItem label="用车模式" {...formItemLayout} name="use_mode">
+              <Select style={{ width: 250 }}>
+                <Option value="1">指定停车点</Option>
+                <Option value="2">禁停区</Option>
+              </Select>
+            </FormItem>
+          </Form>
         </Modal>
       </div>
     );
@@ -222,40 +291,48 @@ class FilterForm extends React.Component {
   }
 }
 
-// 子组件二： 开通城市
-class OpenCityForm extends React.Component {
-  render() {
-    const formItemLayout = {
-      labelCol: {
-        span: 5,
-      },
-      wrapperCol: {
-        span: 19,
-      },
-    };
+// // 子组件二： 开通城市
+// class OpenCityForm extends React.Component {
+//   render() {
+//     const formItemLayout = {
+//       labelCol: {
+//         span: 5,
+//       },
+//       wrapperCol: {
+//         span: 19,
+//       },
+//     };
 
-    return (
-      <Form layout="horizontal">
-        <FormItem label="选择城市" {...formItemLayout} name="city_id">
-          <Select style={{ width: 100 }}>
-            <Option value="">全部</Option>
-            <Option value="1">北京市</Option>
-            <Option value="2">天津市</Option>
-          </Select>
-        </FormItem>
-        <FormItem label="营运模式" {...formItemLayout} name="op_mode">
-          <Select style={{ width: 100 }}>
-            <Option value="1">自营</Option>
-            <Option value="2">加盟</Option>
-          </Select>
-        </FormItem>
-        <FormItem label="用车模式" {...formItemLayout} name="use_mode">
-          <Select style={{ width: 100 }}>
-            <Option value="1">指定停车点</Option>
-            <Option value="2">禁停区</Option>
-          </Select>
-        </FormItem>
-      </Form>
-    );
-  }
-}
+//     return (
+//       <Form
+//         layout="horizontal"
+//         initialValues={{
+//           city_id: '',
+//           op_mode: '1',
+//           use_mode: '1',
+//         }}
+//         form={form}
+//       >
+//         <FormItem label="选择城市" {...formItemLayout} name="city_id">
+//           <Select style={{ width: 250 }}>
+//             <Option value="">全部</Option>
+//             <Option value="1">北京市</Option>
+//             <Option value="2">天津市</Option>
+//           </Select>
+//         </FormItem>
+//         <FormItem label="营运模式" {...formItemLayout} name="op_mode">
+//           <Select style={{ width: 250 }}>
+//             <Option value="1">自营</Option>
+//             <Option value="2">加盟</Option>
+//           </Select>
+//         </FormItem>
+//         <FormItem label="用车模式" {...formItemLayout} name="use_mode">
+//           <Select style={{ width: 250 }}>
+//             <Option value="1">指定停车点</Option>
+//             <Option value="2">禁停区</Option>
+//           </Select>
+//         </FormItem>
+//       </Form>
+//     );
+//   }
+// }
