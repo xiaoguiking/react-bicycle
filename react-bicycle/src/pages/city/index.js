@@ -10,6 +10,7 @@ import moment from 'moment';
  *
  * 子组件 一： 选择表单
  * 子组件二： 开通城市
+ * bug 开通城市数据提交存在问题
  */
 
 const FormItem = Form.Item;
@@ -91,16 +92,32 @@ export default class City extends React.Component {
     });
   };
 
-  handleSubmit = async () => {
+  handleSubmit = () => {
     console.log(1);
-    // if (this.state.isShowCity) {
-    //   const fieldsValue = await form.validateFields();
-    //   //fieldsValue即为表单内的值
-    //   console.log('okHandle -> fieldsValue', fieldsValue);
-    // }
-    this.setState({
-      isShowCity: false,
-    });
+
+    // const fieldsValue = await form.validateFields();
+    //fieldsValue即为表单内的值
+    // let cityInfo = this.formRef.current.validateFields({
+    //   username: 'Bamboo',
+    // });
+    // console.log('okHandle -> fieldsValue', cityInfo);
+    axios
+      .ajax({
+        url: '/city/open',
+        data: {
+          // params: cityInfo
+        },
+      })
+      .then((res) => {
+        // eslint-disable-next-line
+        if (res.code == '0') {
+          message.success('开通成功');
+          this.setState({
+            isShowCity: false,
+          });
+          this.requestCity();
+        }
+      });
   };
 
   render() {
@@ -173,14 +190,14 @@ export default class City extends React.Component {
         dataIndex: 'sys_user_name',
       },
     ];
-    const formItemLayout = {
-      labelCol: {
-        span: 5,
-      },
-      wrapperCol: {
-        span: 19,
-      },
-    };
+    // const formItemLayout = {
+    //   labelCol: {
+    //     span: 5,
+    //   },
+    //   wrapperCol: {
+    //     span: 19,
+    //   },
+    // };
     return (
       <div style={style}>
         <Card style={{ marginTop: 10 }}>
@@ -208,36 +225,11 @@ export default class City extends React.Component {
           onCancel={this.handleCancel}
           forceRender={true}
         >
-          <Form
-            // form={form}
-            ref={this.formRef}
-            layout="horizontal"
-            initialValues={{
-              city_id: '',
-              op_mode: '1',
-              use_mode: '1',
+          <OpenCityForm
+            wrappedComponentRef={(inst) => {
+              this.cityForm = inst;
             }}
-          >
-            <FormItem label="选择城市" {...formItemLayout} name="city_id">
-              <Select style={{ width: 250 }}>
-                <Option value="">全部</Option>
-                <Option value="1">北京市</Option>
-                <Option value="2">天津市</Option>
-              </Select>
-            </FormItem>
-            <FormItem label="营运模式" {...formItemLayout} name="op_mode">
-              <Select style={{ width: 250 }}>
-                <Option value="1">自营</Option>
-                <Option value="2">加盟</Option>
-              </Select>
-            </FormItem>
-            <FormItem label="用车模式" {...formItemLayout} name="use_mode">
-              <Select style={{ width: 250 }}>
-                <Option value="1">指定停车点</Option>
-                <Option value="2">禁停区</Option>
-              </Select>
-            </FormItem>
-          </Form>
+          />
         </Modal>
       </div>
     );
@@ -292,47 +284,49 @@ class FilterForm extends React.Component {
 }
 
 // // 子组件二： 开通城市
-// class OpenCityForm extends React.Component {
-//   render() {
-//     const formItemLayout = {
-//       labelCol: {
-//         span: 5,
-//       },
-//       wrapperCol: {
-//         span: 19,
-//       },
-//     };
-
-//     return (
-//       <Form
-//         layout="horizontal"
-//         initialValues={{
-//           city_id: '',
-//           op_mode: '1',
-//           use_mode: '1',
-//         }}
-//         form={form}
-//       >
-//         <FormItem label="选择城市" {...formItemLayout} name="city_id">
-//           <Select style={{ width: 250 }}>
-//             <Option value="">全部</Option>
-//             <Option value="1">北京市</Option>
-//             <Option value="2">天津市</Option>
-//           </Select>
-//         </FormItem>
-//         <FormItem label="营运模式" {...formItemLayout} name="op_mode">
-//           <Select style={{ width: 250 }}>
-//             <Option value="1">自营</Option>
-//             <Option value="2">加盟</Option>
-//           </Select>
-//         </FormItem>
-//         <FormItem label="用车模式" {...formItemLayout} name="use_mode">
-//           <Select style={{ width: 250 }}>
-//             <Option value="1">指定停车点</Option>
-//             <Option value="2">禁停区</Option>
-//           </Select>
-//         </FormItem>
-//       </Form>
-//     );
-//   }
-// }
+class OpenCityForm extends React.Component {
+  formRef = React.createRef();
+  render() {
+    const formItemLayout = {
+      labelCol: {
+        span: 5,
+      },
+      wrapperCol: {
+        span: 19,
+      },
+    };
+    // const [form] = Form.useForm();
+    return (
+      <Form
+        layout="horizontal"
+        initialValues={{
+          city_id1: '',
+          op_mode1: '1',
+          use_mode1: '1',
+        }}
+        // form={form}
+        ref={this.formRef}
+      >
+        <FormItem label="选择城市" {...formItemLayout} name="city_id1">
+          <Select style={{ width: 250 }}>
+            <Option value="">全部</Option>
+            <Option value="1">北京市</Option>
+            <Option value="2">天津市</Option>
+          </Select>
+        </FormItem>
+        <FormItem label="营运模式" {...formItemLayout} name="op_mode1">
+          <Select style={{ width: 250 }}>
+            <Option value="1">自营</Option>
+            <Option value="2">加盟</Option>
+          </Select>
+        </FormItem>
+        <FormItem label="用车模式" {...formItemLayout} name="use_mode1">
+          <Select style={{ width: 250 }}>
+            <Option value="1">指定停车点</Option>
+            <Option value="2">禁停区</Option>
+          </Select>
+        </FormItem>
+      </Form>
+    );
+  }
+}
