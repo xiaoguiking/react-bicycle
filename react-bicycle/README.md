@@ -2,9 +2,9 @@
 
 - master 主分支
 - dev-Form 表单分支 done
-- dev—List 列表分支
+- dev—List 列表分支 done
 - dev-modal 模态框分支
-- dev-city 城市管理
+- dev-city 城市管理 done (bug)
 - dev-order 订单管理
 - dev-engineer 工程化
 
@@ -18,14 +18,16 @@
 
 - 合并分支遇到冲突解决
 
-
-
 ### 记录合并 dev-city
 
-- git merge dev-city  
+- git merge dev-city
 - 合并过程出现冲突 git status， 解决冲突
-- git commit -am "dev-city 合并master冲突解决"
+- git commit -am "dev-city 合并 master 冲突解决"
 - git push origin master
+
+### dev-order 获取 master 最新代码
+
+- dev-order git merge master
 
 ## 项目整体学习架构
 

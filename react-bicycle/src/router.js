@@ -20,6 +20,10 @@ import Tabs from './pages/ui/tabs';
 import Gallery from './pages/ui/gallery';
 import Carousels from './pages/ui/carousels';
 import City from './pages/city';
+import Order from './pages/order';
+
+// 通用详情布局
+import Common from './common';
 
 export default class IRouter extends React.Component {
   render() {
@@ -30,32 +34,40 @@ export default class IRouter extends React.Component {
             {/*<Route path="/" component={Admin} />*/}
             <Route path="/login" component={Login} />
             <Route
-              path="/"
+              path="/admin"
               render={() => (
                 <Admin>
                   <Switch>
-                    <Route exact path="/home" component={Home} />
-                    <Route exact path="/ui/buttons" component={Buttons} />
-                    <Route path="/ui/modals" component={Modals} />
-                    <Route path="/ui/loadings" component={Loadings} />
-                    <Route path="/ui/notification" component={Notice} />
-                    <Route path="/ui/messages" component={Message} />
-                    <Route path="/ui/tabs" component={Tabs} />
-                    <Route path="/ui/gallery" component={Gallery} />
-                    <Route path="/ui/carousel" component={Carousels} />
-                    <Route path="/form/login" component={FormLogin} />
-                    <Route path="/form/reg" component={FormReg} />
-                    <Route path="/table/basic" component={BasicTable} />
-                    <Route path="/table/high" component={highTable} />
-                    <Route path="/table/high" component={highTable} />
-                    <Route path="/city" component={City} />
-                    <Redirect to="/home" />
+                    <Route exact path="/admin/home" component={Home} />
+                    <Route exact path="/admin/ui/buttons" component={Buttons} />
+                    <Route path="/admin/ui/modals" component={Modals} />
+                    <Route path="/admin/ui/loadings" component={Loadings} />
+                    <Route path="/admin/ui/notification" component={Notice} />
+                    <Route path="/admin/ui/messages" component={Message} />
+                    <Route path="/admin/ui/tabs" component={Tabs} />
+                    <Route path="/admin/ui/gallery" component={Gallery} />
+                    <Route path="/admin/ui/carousel" component={Carousels} />
+                    <Route path="/admin/form/login" component={FormLogin} />
+                    <Route path="/admin/form/reg" component={FormReg} />
+                    <Route path="/admin/table/basic" component={BasicTable} />
+                    <Route path="/admin/table/high" component={highTable} />
+                    <Route path="/admin/table/high" component={highTable} />
+                    <Route path="/admin/city" component={City} />
+                    <Route path="/admin/order" component={Order} />
+                    <Redirect to="/admin/home" />
                     <Route component={NotMatch} />
                   </Switch>
                 </Admin>
               )}
             />
-            <Route path="/admin" component={Admin} />
+            <Route
+              path="/common"
+              render={() => (
+                <Common>
+                  <Route path="/common/order/detail/:orderId" component={Login} />
+                </Common>
+              )}
+            />
           </Switch>
         </App>
       </HashRouter>
