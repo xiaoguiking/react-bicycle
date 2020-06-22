@@ -106,3 +106,20 @@ src/components
 - NavLink Link
 
 路由传值取参数 `<Route path="/admin/:id" 取值：this.props.match.params.id`
+
+### redux
+
+- 单向数据流 从父流向子，兄弟组件无法共享
+- State： react 中的状态 是只读对象，不可更改
+- Reducer 基本函数， 用于对 State 的业务逻辑处理，传入 state 和 action， 返回一个新的 state
+- Action 普通对象，用于描述事件行为，改变 State
+
+### redux 集成项目(面包屑)
+
+- 创建 Action 模块
+- 创建 Reducer 模块
+- 创建 Store 模块
+- 通过 connect 方法将 react 组件和 redux 连接起来
+- 添加 Provider 作为项目的根组件进行包裹，用于对数据的存储
+
+* 侧边菜单选中功能

@@ -7,6 +7,15 @@ ul,
 li {
   list-style: none;
 }
+.clearfix {
+  &:after {
+    content: '';
+    clear: both;
+    visibility: hidden;
+    display: block;
+    height: 0;
+  }
+}
 .container {
   display: flex;
   // 侧边栏
@@ -45,4 +54,3 @@ li {
 .ant-carousel .slick-slide h3 {
   color: #fff;
 }
-

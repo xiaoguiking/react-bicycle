@@ -1,24 +1,17 @@
-/*
- * @Author: your name
- * @Date: 2020-06-06 12:34:30
- * @LastEditTime: 2020-06-06 23:16:54
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /antdBicycle/react-bicycle/react-bicycle/src/components/Header/index.js
- */
-
-/*
- * 天气/时间
- */
-
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
 import Utils from '../../utils';
 import './index.less';
 import { reqWeather } from '../../config/index';
 import Axios from '../../axios';
+import { connect } from 'react-redux';
+/**
+ * 天气时间
+ * Header
+ * 接受redux面包屑数据
+ */
 
-export default class extends Component {
+class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -81,26 +74,51 @@ export default class extends Component {
   }
   render() {
     const { weather, dayPictureUrl } = this.state;
+    const { menuType } = this.props;
+    console.log(this.props.menuName, 'propmenuname');
+
     return (
       <div className="header">
         <Row className="header-top">
-          <Col span={24}>
+          {menuType ? (
+            <Col span="6" className="logo-common">
+              <img src="/assets/logo-ant.svg" alt="logo" />
+              <span>react管理系统</span>
+            </Col>
+          ) : (
+            ''
+          )}
+          <Col span={menuType ? 18 : 24}>
             <span>欢迎登陆&nbsp; &nbsp;{this.state.userName}</span>
-            <a href="http:www.baidu.com">退出 </a>
+            <a href="http:www.baidu.com" style={{ color: 'yellow' }}>
+              退出
+            </a>
           </Col>
         </Row>
-        <Row className="breadcrumb">
-          <Col span={4} className="breadcrumb-title">
-            首页
-          </Col>
-          <Col span={20} className="weather">
-            <span className="date"> {this.state.sysTime} </span>
-            {/*<span className="weather-img"> {dayPictureUrl}</span>*/}
-            <img src={dayPictureUrl} alt="天气" />
-            <span className="weather-detail">{weather}</span>
-          </Col>
-        </Row>
+        {menuType ? (
+          ''
+        ) : (
+          <Row className="breadcrumb">
+            <Col span={4} className="breadcrumb-title">
+              {this.props.menuName}
+            </Col>
+            <Col span={20} className="weather">
+              <span className="date"> {this.state.sysTime} </span>
+              {/*<span className="weather-img"> {dayPictureUrl}</span>*/}
+              <img src={dayPictureUrl} alt="天气" />
+              <span className="weather-detail">{weather}</span>
+            </Col>
+          </Row>
+        )}
       </div>
     );
   }
 }
+
+// 接受redux 更新的值
+const mapStateToProps = (state) => {
+  return {
+    menuName: state.menuName,
+  };
+};
+export default connect(mapStateToProps)(Header);

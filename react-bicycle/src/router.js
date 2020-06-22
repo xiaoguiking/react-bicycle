@@ -22,6 +22,8 @@ import Carousels from './pages/ui/carousels';
 import City from './pages/city';
 import Order from './pages/order';
 
+import OrderDetail from './pages/order/detail';
+
 // 通用详情布局
 import Common from './common';
 
@@ -34,10 +36,19 @@ export default class IRouter extends React.Component {
             {/*<Route path="/" component={Admin} />*/}
             <Route path="/login" component={Login} />
             <Route
-              path="/admin"
+              path="/common"
+              render={() => (
+                <Common>
+                  <Route path="/order/detail/:orderId" component={OrderDetail} />
+                </Common>
+              )}
+            />
+            <Route
+              path="/"
               render={() => (
                 <Admin>
                   <Switch>
+                    <Route exact path="/" component={Home} />
                     <Route exact path="/admin/home" component={Home} />
                     <Route exact path="/admin/ui/buttons" component={Buttons} />
                     <Route path="/admin/ui/modals" component={Modals} />
@@ -54,18 +65,10 @@ export default class IRouter extends React.Component {
                     <Route path="/admin/table/high" component={highTable} />
                     <Route path="/admin/city" component={City} />
                     <Route path="/admin/order" component={Order} />
-                    <Redirect to="/admin/home" />
                     <Route component={NotMatch} />
+                    <Redirect exact from="/#/" to="/#/admin/home" />
                   </Switch>
                 </Admin>
-              )}
-            />
-            <Route
-              path="/common"
-              render={() => (
-                <Common>
-                  <Route path="/common/order/detail/:orderId" component={Login} />
-                </Common>
               )}
             />
           </Switch>
