@@ -70,12 +70,11 @@ class Header extends Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.state.sysTime);
+    clearInterval(this.sysTime);
   }
   render() {
     const { weather, dayPictureUrl } = this.state;
     const { menuType } = this.props;
-    console.log(this.props.menuName, 'propmenuname');
 
     return (
       <div className="header">
