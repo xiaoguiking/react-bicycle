@@ -25,6 +25,13 @@
 - git commit -am "dev-city 合并 master 冲突解决"
 - git push origin master
 
+### 记录合并 dev-order 表单 radio
+
+- git merge dev-order
+- 合并过程出现冲突 git status， 解决冲突
+- git commit -am "dev-order 合并 master 冲突解决"
+- git push origin master
+
 ### dev-order 获取 master 最新代码
 
 - dev-order git merge master
