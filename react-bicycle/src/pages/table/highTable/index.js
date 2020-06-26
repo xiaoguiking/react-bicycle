@@ -38,7 +38,7 @@ export default class highTable extends React.Component {
           this.setState({
             dataList: res.result,
             pagination: Utils.pagination(res, (current) => {
-              _this.params.age = current;
+              _this.params.page = current;
               this.requestList();
             }),
           });

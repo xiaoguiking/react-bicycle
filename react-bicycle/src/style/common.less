@@ -7,6 +7,15 @@ ul,
 li {
   list-style: none;
 }
+.clearfix {
+  &:after {
+    content: '';
+    clear: both;
+    visibility: hidden;
+    display: block;
+    height: 0;
+  }
+}
 .container {
   display: flex;
   // 侧边栏
@@ -28,4 +37,20 @@ li {
     position: relative;
     padding: 20px;
   }
+}
+.content-wrap {
+  background-color: #fff;
+  border: 1px solid #e8e8e8;
+  margin-top: -1px;
+}
+.ant-fix .ant-carousel .slick-slide {
+  text-align: center;
+  height: 160px;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import renderEmpty from 'antd/lib/config-provider/renderEmpty';
 
 export default class DemoTem extends React.Component {
   render() {

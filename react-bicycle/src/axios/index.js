@@ -6,6 +6,36 @@ import { Modal } from 'antd';
  * axios封装
  */
 export default class Axios {
+  static requestList(url, params) {
+    var data = {
+      params: params,
+    };
+    this.ajax({
+      url,
+      params,
+    }).then((res) => {
+      if (data && data.result) {
+        // 动态添加key
+        let list = data.res.result.map((item, index) => {
+          item.key1 = index;
+          return item;
+        });
+        this.setState({
+          list,
+          dataPagination: res.result,
+          // // 清空每次的选择
+          // selectedRowKeys: [],
+          // sel ectedRows: null,
+          // 分页
+          pagination: Utils.pagination(res, (current) => {
+            // todo
+            _this.params.page = current;
+            this.requestDPagination();
+          }),
+        });
+      }
+    });
+  }
   static JsonP(options) {
     return new Promise((resolve, reject) => {
       JsonP(

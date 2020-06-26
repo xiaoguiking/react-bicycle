@@ -1,47 +1,71 @@
+// src/components/Header/index.less
+@import './../../style/default.less';
 .header {
-  background-color: #fff;
+  background-color: @colorM;
   .header-top {
     height: 60px;
     line-height: 60px;
-    text-align: right;
     padding: 0 20px;
-
-    a {
-      margin-left: 15px;
+    text-align: right;
+    .logo-common {
+      line-height: 60px;
+      text-align: left;
+      font-size: 18px;
+      img {
+        height: 40px;
+        vertical-align: middle;
+      }
+      span {
+        margin-left: 5px;
+      }
     }
-    a:link {
-      color: #f9c700;
+    a {
+      margin-left: 40px;
     }
   }
   .breadcrumb {
     height: 40px;
     line-height: 40px;
-    padding: 0 20x;
+    text-align: right;
+    padding: 0 20px;
     border-top: 1px solid #f9c700;
     .breadcrumb-title {
       text-align: center;
-      padding-right: 20px;
-      font-size: 20px;
-
+      font-size: @fontC;
       &:after {
         position: absolute;
         content: '';
-        left: 75px;
-        top: 38px;
-        border-bottom: 12px solid transparent;
-        border-top: 12px solid #fff;
+        left: 83px;
+        top: 39px;
+        border-top: 9px solid @colorM;
         border-left: 12px solid transparent;
         border-right: 12px solid transparent;
       }
     }
     .weather {
       text-align: right;
-      padding-right: 30px;
-
-      img {
-        width: 20px;
-        margin: 0 10px;
+      font-size: 14px;
+      .date {
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+      .weather-img {
+        img {
+          height: 15px;
+        }
+      }
+      .weather-detail {
+        margin-left: 5px;
+        vertical-align: middle;
       }
     }
+  }
+}
+
+// common 页面简单头
+.simple-page {
+  .header-top {
+    background: #1890ff;
+    color: @colorM;
   }
 }

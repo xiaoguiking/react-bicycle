@@ -3,12 +3,19 @@ import MenuConfig from '../../config/menuConfig';
 import { Menu } from 'antd';
 import MenuItem from 'antd/lib/menu/MenuItem';
 import { Link, NavLink } from 'react-router-dom';
-// import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+import { connect } from 'react-redux'; // 引入连接器
+import { switchMenu } from './../../redux/action';
 import './index.less';
 
 const { SubMenu } = Menu;
-
-export default class extends Component {
+/**
+ *  NavLeft
+ * 使用redux触发面包屑
+ */
+class NavLeft extends Component {
+  state = {
+    currentKey: '',
+  };
   // 菜单渲染  reduce
   renderNavNode2 = (MenuConfig) => {
     return MenuConfig.reduce((pre, item) => {
@@ -43,32 +50,47 @@ export default class extends Component {
   };
 
   //  菜单渲染 递归
+  //菜单渲染
   renderMenu = (data) => {
     return data.map((item) => {
+      //如果item有子元素,遍历自己,再次调用,直到子节点加载完毕
       if (item.children) {
         return (
-          <SubMenu key={item.key} title={item.title}>
-            {this.renderMenu(MenuConfig)}
+          <SubMenu title={item.title} key={item.key}>
+            {this.renderMenu(item.children)}
           </SubMenu>
         );
       }
       return (
-        <MenuItem key={item.key} title={item.title}>
+        <Menu.Item title={item.title} key={item.key}>
           <NavLink to={item.key}>{item.title}</NavLink>
-        </MenuItem>
+        </Menu.Item>
       );
     });
   };
+
   // componentDidMount() {
   //   const menuTreeNode = this.renderNavNode2(MenuConfig);
   //   this.setState({
   //     menuTreeNode,
   //   });
   // }
-  componentWillMount() {
-    // const menuTreeNode = this.renderNavNode2(MenuConfig); reduce
-    const menuTreeNode = this.renderNavNode2(MenuConfig); //递归
+
+  handleClick = ({ item, key }) => {
+    console.log(item.props, 'item');
+    const { dispatch } = this.props;
+    dispatch(switchMenu(item.props.title));
     this.setState({
+      currentKey: key,
+    });
+  };
+
+  componentWillMount() {
+    let currentKey = window.location.hash.replace(/#|\?.*$/g, '');
+    // const menuTreeNode = this.renderNavNode2(MenuConfig); reduce
+    const menuTreeNode = this.renderMenu(MenuConfig); //递归
+    this.setState({
+      currentKey,
       menuTreeNode,
     });
   }
@@ -80,10 +102,19 @@ export default class extends Component {
           <h1>logo</h1>
         </div>
 
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+        <Menu
+          theme="dark"
+          onClick={this.handleClick}
+          defaultSelectedKeys={['1']}
+          mode="inline"
+          selectedKeys={this.state.currentKey}
+        >
           {this.state.menuTreeNode}
         </Menu>
       </div>
     );
   }
 }
+
+// export default NavLeft;
+export default connect()(NavLeft);
