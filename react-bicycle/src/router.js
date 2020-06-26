@@ -21,6 +21,7 @@ import Gallery from './pages/ui/gallery';
 import Carousels from './pages/ui/carousels';
 import City from './pages/city';
 import Order from './pages/order';
+import User from './pages/user';
 
 import OrderDetail from './pages/order/detail';
 
@@ -65,6 +66,7 @@ export default class IRouter extends React.Component {
                     <Route path="/admin/table/high" component={highTable} />
                     <Route path="/admin/city" component={City} />
                     <Route path="/admin/order" component={Order} />
+                    <Route path="/admin/user" component={User} />
                     <Route component={NotMatch} />
                     <Redirect exact from="/#/" to="/#/admin/home" />
                   </Switch>
