@@ -36,6 +36,28 @@
 
 - dev-order git merge master
 
+### dev-echarts
+
+- loginFix --- login
+- yarn add echarts echarts-for-react
+
+- 按需加载
+
+  ```react
+  bar.js
+  ```
+
+// 按需加载 // import echartTheme import echarts from 'echarts/lib/echarts'; // 导入柱形图 import 'echarts/lib/chart/bar'; import 'echarts/lib/component/tooltip'; import 'echarts/lib/component/legend'; import 'echarts/lib/component/markPoint'; import 'echarts/lib/component/title'; import ReactEcharts from 'echarts-for-react';
+
+````
+
+- 富文本
+  ```js
+ yarn add  react-draft-wysiwyg --save  插件
+ yarn add draftjs-to-html --save   转换成HTML
+ yarn add draft-js
+````
+
 ## 项目整体学习架构
 
 - 创建一个项目 create-react-app react-bicycle
@@ -87,15 +109,15 @@ src/components
 
 - src
 - components
-  - Footer
-    - index.js
-    - index.css
-  - Header
-    - index.js
-    - index.css
-  - NavLeft
-    - index.js
-    - index.css
+- Footer
+  - index.js
+  - index.css
+- Header
+  - index.js
+  - index.css
+- NavLeft
+  - index.js
+  - index.css
 - admin.js
 - style -common.less
 - axios
@@ -130,3 +152,7 @@ src/components
 - 添加 Provider 作为项目的根组件进行包裹，用于对数据的存储
 
 * 侧边菜单选中功能
+
+```
+
+```

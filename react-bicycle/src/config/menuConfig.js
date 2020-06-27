@@ -100,20 +100,20 @@ const menuList = [
     key: '/admin/bikeMap',
   },
   {
-    title: '图标',
+    title: '图表echarts',
     key: '/admin/charts',
     children: [
       {
         title: '柱形图',
-        key: '/admin/charts/bar',
+        key: '/admin/echarts/bar',
       },
       {
         title: '饼图',
-        key: '/charts/pie',
+        key: '/admin/echarts/pie',
       },
       {
         title: '折线图',
-        key: '/charts/line',
+        key: '/admin/echarts/line',
       },
     ],
   },

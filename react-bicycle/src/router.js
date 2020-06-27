@@ -3,7 +3,7 @@ import React from 'react';
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import App from './App';
 import Admin from './admin';
-import Login from './pages/login/Login';
+import Login from './pages/loginFix/Login';
 // import NotFound from './pages/Login/NotFound';
 import Buttons from './pages/ui/buttons';
 import Modals from './pages/ui/modals';
@@ -20,7 +20,11 @@ import Tabs from './pages/ui/tabs';
 import Gallery from './pages/ui/gallery';
 import Carousels from './pages/ui/carousels';
 import City from './pages/city';
+import Rich from './pages/rich';
 import Order from './pages/order';
+import Bar from './pages/echarts/bar';
+import Pie from './pages/echarts/pie';
+import Line from './pages/echarts/line';
 
 import OrderDetail from './pages/order/detail';
 
@@ -63,8 +67,12 @@ export default class IRouter extends React.Component {
                     <Route path="/admin/table/basic" component={BasicTable} />
                     <Route path="/admin/table/high" component={highTable} />
                     <Route path="/admin/table/high" component={highTable} />
+                    <Route path="/admin/rich" component={Rich} />
                     <Route path="/admin/city" component={City} />
                     <Route path="/admin/order" component={Order} />
+                    <Route path="/admin/echarts/bar" component={Bar} />
+                    <Route path="/admin/echarts/pie" component={Pie} />
+                    <Route path="/admin/echarts/line" component={Line} />
                     <Route component={NotMatch} />
                     <Redirect exact from="/#/" to="/#/admin/home" />
                   </Switch>
