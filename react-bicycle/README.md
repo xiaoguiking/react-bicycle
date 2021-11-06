@@ -130,3 +130,6 @@ src/components
 - 添加 Provider 作为项目的根组件进行包裹，用于对数据的存储
 
 * 侧边菜单选中功能
+
+
+### 同步更新package.json
