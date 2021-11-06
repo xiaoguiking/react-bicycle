@@ -104,7 +104,10 @@ class Header extends Component {
             <Col span={20} className="weather">
               <span className="date"> {this.state.sysTime} </span>
               {/*<span className="weather-img"> {dayPictureUrl}</span>*/}
-              <img src={dayPictureUrl} alt="天气" />
+              {/*
+              
+                <img src={dayPictureUrl} alt="天气" />
+              */}
               <span className="weather-detail">{weather}</span>
             </Col>
           </Row>

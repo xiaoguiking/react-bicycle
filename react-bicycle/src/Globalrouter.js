@@ -3,8 +3,8 @@ import './index.less';
 //  路由界面
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import App from './App';
-import Admin from './pages//Admin/Admin';
-import Login from './pages/Login/Login';
+import Admin from './pages/Admin/Admin';
+import Login from './pages/Login/index.js';
 import NotFound from './pages/Login/NotFound';
 
 function GlobalRouter() {
