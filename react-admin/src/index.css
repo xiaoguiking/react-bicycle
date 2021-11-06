@@ -26,3 +26,19 @@ code {
   background-color: #337ab7;
   border-color: #2e6da4;
 }
+.btn.btn-success {
+  color: #fff;
+  background-color: #b73333;
+  border-color: #a42e2e;
+}
+.btn.btn-info {
+  color: #fff;
+  background-color: #aeb733;
+  border-color: #92a42e;
+}
+
+ul,li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
