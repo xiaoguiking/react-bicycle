@@ -1,4 +1,4 @@
-'use strict';
+
 
 const fs = require('fs');
 const path = require('path');
@@ -31,6 +31,8 @@ const postcssNormalize = require('postcss-normalize');
 
 const appPackageJson = require(paths.appPackageJson);
 
+const px2rem = require("postcss-px2rem")
+
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 
@@ -61,8 +63,11 @@ const swSrc = paths.swSrc;
 // style files regexes
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
-const sassRegex = /\.(scss|sass)$/;
-const sassModuleRegex = /\.module\.(scss|sass)$/;
+// const lessRegex = /\.(scss|sass)$/;
+// const lessModuleRegex = /\.module\.(scss|sass)$/;
+// 配置less
+const lessRegex = /\.(scss|less)$/;
+const lessModuleRegex = /\.module\.(scss|less)$/;
 
 const hasJsxRuntime = (() => {
   if (process.env.DISABLE_NEW_JSX_TRANSFORM === 'true') {
@@ -129,6 +134,7 @@ module.exports = function (webpackEnv) {
               },
               stage: 3,
             }),
+            px2rem({remUnit: 75}),
             // Adds PostCSS Normalize as the reset css with default options,
             // so that it honors browserslist config in package.json
             // which in turn let's users customize the target behavior as per their needs.
@@ -500,8 +506,8 @@ module.exports = function (webpackEnv) {
             // By default we support SASS Modules with the
             // extensions .module.scss or .module.sass
             {
-              test: sassRegex,
-              exclude: sassModuleRegex,
+              test: lessRegex,
+              exclude: lessModuleRegex,
               use: getStyleLoaders(
                 {
                   importLoaders: 3,
@@ -509,7 +515,7 @@ module.exports = function (webpackEnv) {
                     ? shouldUseSourceMap
                     : isEnvDevelopment,
                 },
-                'sass-loader'
+                'less-loader'
               ),
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
@@ -520,7 +526,7 @@ module.exports = function (webpackEnv) {
             // Adds support for CSS Modules, but using SASS
             // using the extension .module.scss or .module.sass
             {
-              test: sassModuleRegex,
+              test: lessModuleRegex,
               use: getStyleLoaders(
                 {
                   importLoaders: 3,
@@ -531,7 +537,7 @@ module.exports = function (webpackEnv) {
                     getLocalIdent: getCSSModuleLocalIdent,
                   },
                 },
-                'sass-loader'
+                'less-loader'
               ),
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.

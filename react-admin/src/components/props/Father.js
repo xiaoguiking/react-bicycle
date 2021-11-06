@@ -13,7 +13,7 @@ export const Father =  () => {
         setTitle(title)
     }
     return (
-        <div className="father-contain">
+        <div className="father-container">
         <div className="box1">
             <Son title={title} changeTitle={changeTitle} handleTitle={handleTitle}/>
         </div>

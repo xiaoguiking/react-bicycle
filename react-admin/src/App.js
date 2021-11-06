@@ -1,10 +1,11 @@
+import Header from "./components/Header"
 import './App.css';
-import {Father} from "./components/props/Father"
+// import {Father} from "./components/props/Father"  Father
 
 function App() {
   return (
     <div className="App">
-      <Father />
+      <Header />
     </div>
   );
 }
