@@ -1,10 +1,13 @@
 import React from 'react'
 import "./index.less"
 
-function Header () {
+function Header (props) {
+    const {openInput} = props
+    console.log(props, "Header")
     return (
         <div className="header-container">
-        <div>头部</div>
+            <div>事件待办</div>
+            <span className="icon-add" onClick={openInput}>+</span>
         </div>
     )
 }

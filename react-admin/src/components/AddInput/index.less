@@ -1,0 +1,22 @@
+.input-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    // border: 2px solid gray;
+
+    .input-add {
+        width: 70vw;
+        border: 1px solid gray;
+        height: 40px;
+        box-sizing: border-box;
+        border:0;/*去掉未选中边框*/
+        outline:none;/*去掉选中边框*/
+        background-color:rgba(0,0,0,0);/*透明背景色*/
+    }
+    input:focus {
+        border: 1px solid gray;
+        border-right-color: white;
+        outline: none;
+    }
+}
