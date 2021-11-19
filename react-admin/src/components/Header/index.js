@@ -3,7 +3,6 @@ import "./index.less"
 
 function Header (props) {
     const {openInput} = props
-    console.log(props, "Header")
     return (
         <div className="header-container">
             <div>事件待办</div>

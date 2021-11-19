@@ -1,3 +1,4 @@
+## react-webapp
 ## 移动端适配记录
 
 - yarn add lib-flexible
@@ -12,4 +13,11 @@
   const px2rem = require("postcss-px2rem")
   找到 postcss
   px2rem({remUnit: 75}),
+  ```
+
+
+### todo-webapp
+- 模态框组件开发
+  ```
+  react 插槽功能  ----- vue slot
   ```

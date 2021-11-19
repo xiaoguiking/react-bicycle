@@ -4,7 +4,7 @@ import "./index.less"
 function AddInput(props) {
     const { isInputShow, addItem } = props;
     const inputRef = useRef("")
-    console.log(props, "AddInput")
+    // console.log(props, "AddInput")
 
     const submitValue = () => {
         let inputValue = inputRef.current.value.trim()
