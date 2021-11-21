@@ -73,6 +73,7 @@ class Header extends Component {
     clearInterval(this.sysTime);
   }
   render() {
+    // eslint-disable-next-line no-unused-vars
     const { weather, dayPictureUrl } = this.state;
     const { menuType } = this.props;
 
