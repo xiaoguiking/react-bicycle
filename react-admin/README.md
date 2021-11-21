@@ -1,4 +1,5 @@
 ## react-webapp
+
 ## 移动端适配记录
 
 - yarn add lib-flexible
@@ -7,6 +8,7 @@
   需要yarn ejext 配置  react-admin/config/webpack.config.js
   ```
 - yarn add postcss-px2rem
+
   ```
    需要yarn ejext 配置  react-admin/config/webpack.config.js
 
@@ -15,8 +17,8 @@
   px2rem({remUnit: 75}),
   ```
 
-
 ### todo-webapp
+
 - 模态框组件开发
   ```
   react 插槽功能  ----- vue slot
