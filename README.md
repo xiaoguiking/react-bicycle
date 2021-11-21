@@ -98,3 +98,16 @@ ComponentWillUnmount 卸载生命周期，去除定时器，取消网络请求�
 - 用户通过 view， 发出 action 调用 dispatch 方法
 - 然后 store 自动调用 reducer 方法，传入两个参数，当前的 state 和 action，reducer 返回一个新的 state
 - state 一旦有变化，store 就会监听函数，更新 view
+
+## 分支记录
+
+- master 主分支
+- develop
+- develop-bicycle
+- /dev-Form
+- /dev-List
+- /dev-city
+- /dev-echarts
+- /dev-engineer
+- /dev-order
+- /dev-user
