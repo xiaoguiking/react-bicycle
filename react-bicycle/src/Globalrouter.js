@@ -1,6 +1,6 @@
+//* 路由
 import React, { Fragment } from 'react';
 import './index.less';
-//  路由界面
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import App from './App';
 import Admin from './pages/Admin/Admin';
@@ -13,8 +13,8 @@ function GlobalRouter() {
       <BrowserRouter>
         <App>
           <Switch>
-            <Route exact path='/' component={Admin}></Route>
-            <Route path='/login' component={Login}></Route>
+          <Route path='/login' component={Login}></Route>
+          <Route exact path='/' component={Admin}></Route>
             <Route path='*' component={NotFound}></Route>
             <Redirect from='/' to='/admin' ></Redirect> 
           </Switch>

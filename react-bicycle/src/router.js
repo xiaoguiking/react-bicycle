@@ -21,7 +21,6 @@ import Gallery from './pages/ui/gallery';
 import Carousels from './pages/ui/carousels';
 import City from './pages/city';
 import Order from './pages/order';
-
 import OrderDetail from './pages/order/detail';
 
 // 通用详情布局

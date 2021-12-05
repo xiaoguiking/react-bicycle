@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col } from 'antd';
 import Utils from '../../utils';
 import './index.less';
@@ -83,14 +84,17 @@ class Header extends Component {
           {menuType ? (
             <Col span="6" className="logo-common">
               <img src="/assets/logo-ant.svg" alt="logo" />
-              <span>react管理系统</span>
+              {/*
+               <span>react管理系统</span>
+              */}
+              <Link to="/">react管理系统</Link>
             </Col>
           ) : (
             ''
           )}
           <Col span={menuType ? 18 : 24}>
             <span>欢迎登陆&nbsp; &nbsp;{this.state.userName}</span>
-            <a href="http:www.baidu.com" style={{ color: 'yellow' }}>
+            <a href="/login" style={{ color: '#1291de' }}>
               退出
             </a>
           </Col>

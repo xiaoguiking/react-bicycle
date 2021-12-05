@@ -99,9 +99,8 @@ class NavLeft extends Component {
       <div>
         <div className="logo">
           <img src="/assets/logo-ant.svg" alt="logo" />
-          <h1>logo</h1>
+          <h1>react-admin</h1>
         </div>
-
         <Menu
           theme="dark"
           onClick={this.handleClick}
